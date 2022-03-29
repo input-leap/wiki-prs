@@ -19,10 +19,21 @@ sudo apt install git cmake make xorg-dev g++ libcurl4-openssl-dev \
 
 ### Fedora
 
+Pre-F35:
+
 ```shell
 sudo dnf install git cmake make gcc-c++ xorg-x11-server-devel \
                  libcurl-devel avahi-compat-libdns_sd-devel \
                  libXtst-devel qt5 qt5-devel openssl-devel
+```
+
+Post-F35:
+
+```shell
+sudo dnf install git cmake make gcc-c++ xorg-x11-server-devel \
+                 libcurl-devel avahi-compat-libdns_sd-devel \
+                 libXtst-devel qt5-qtbase qt5-qtbase-devel  \
+                 openssl-devel
 ```
 
 ### CentOS 8+
