@@ -2,6 +2,8 @@ name: Update wiki from PR repo pushes on `master`
 on:
   push:
     branches: ["master"]
+    paths: ["*.md", "*.MD"]
+
 jobs:
   update-wiki:
     runs-on: ubuntu-latest
