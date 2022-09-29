@@ -1,0 +1,17 @@
+name: Update wiki from PR repo pushes on `master`
+on:
+  push:
+    branches: ["master"]
+jobs:
+  update-wiki:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: docker://decathlon/wiki-page-creator-action:latest
+        env:
+          ACTION_MAIL: shymega@users.noreply.github.com
+          ACTION_NAME: Input Leap Wiki (GitHub Actions)
+          GH_PAT: ${{ secrets.WIKI_TOKEN }}
+          OWNER: input-leap
+          REPO_NAME: input-leap
+          SKIP_MD: README.md
