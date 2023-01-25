@@ -1,19 +1,40 @@
-name: Update wiki from PR repo pushes on `master`
+name: Publish docs to Wiki
+
 on:
   push:
-    branches: ["master"]
-    paths: ["*.md", "*.MD"]
+    paths:
+      - wiki/**
+    branches:
+      - main
+
+env:
+  USER_TOKEN: ${{ secrets.WIKI_TOKEN }}
+  USER_NAME: "GitHub Actions"
+  USER_EMAIL: "shymega@users.noreply.github.com"
+  OWNER: input-leap
+  REPOSITORY_NAME: input-leap
 
 jobs:
-  update-wiki:
+  publish_docs_to_wiki:
+    name: Publish docs to Wiki
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: docker://decathlon/wiki-page-creator-action:latest
-        env:
-          ACTION_MAIL: shymega@users.noreply.github.com
-          ACTION_NAME: Input Leap Wiki (GitHub Actions)
-          GH_PAT: ${{ secrets.WIKI_TOKEN }}
-          OWNER: input-leap
-          REPO_NAME: input-leap
-          SKIP_MD: README.md
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Pull content from wiki
+        run: |
+          mkdir tmp_wiki
+          cd tmp_wiki
+          git init
+          git config user.name $USER_NAME
+          git config user.email $USER_EMAIL
+          git pull https://x:$USER_TOKEN@github.com/$OWNER/$REPOSITORY_NAME.wiki.git
+
+      - name: Push content to wiki
+        run: |
+          rsync -av --delete wiki/ tmp_wiki/ --exclude .git
+          cd tmp_wiki
+          git add .
+          git commit -m "Update Wiki content"
+          git push -f --set-upstream https://x:$USER_TOKEN@github.com/$OWNER/$REPOSITORY_NAME.wiki.git master
