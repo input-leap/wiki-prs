@@ -5,7 +5,7 @@ on:
     paths:
       - wiki/**
     branches:
-      - main
+      - master
 
 env:
   USER_TOKEN: ${{ secrets.WIKI_TOKEN }}
