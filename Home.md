@@ -7,16 +7,10 @@ as the project progresses we will be adding bits of information to the wiki. For
 now we wanted to share our binary downloads for stable builds. Stay tuned for
 more!
 
-*Current Version:*: 2.3.3
+*Current Version:*: 2.4.0 - v3.0.0 coming **very** soon!
 
-[![Packaging status](https://repology.org/badge/vertical-allrepos/barrier.svg)](https://repology.org/project/barrier/versions)
+[![Packaging status](https://repology.org/badge/vertical-allrepos/input-leap.svg)](https://repology.org/project/input-leap/versions)
 
 ## Binary Downloads
 
-- [Windows](https://github.com/debauchee/barrier/releases/download/v2.3.3/BarrierSetup-2.3.3-release.exe)
-  The installer will automatically download and install the Visual C++ Runtime
-  if necessary.
-- [macOS](https://github.com/debauchee/barrier/releases/download/v2.3.3/Barrier-2.3.3-release.dmg)
-- Linux, FreeBSD, and OpenBSD - see
-  [here](https://repology.org/project/barrier/versions) for a list of packages
-  available in package repositories.
+Work in progress, we're looking into signed Windows and macOS builds.

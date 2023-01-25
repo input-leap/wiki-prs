@@ -36,11 +36,11 @@ following the instructions on their websites
 ### Clone the repository
 
   ```
-  git clone https://github.com/debauchee/barrier
+  git clone https://github.com/input-leap/input-leap
   ```
   - Change directories into the cloned repository
   ```
-  cd barrier
+  cd input-leap
   ```
  
 ### Build the Debug target
@@ -75,6 +75,6 @@ following the instructions on their websites
   
 #### Notes
   
-  A [`build_env.sh`](https://github.com/debauchee/barrier/blob/b6a1b5742006157c3fe746288961a9d2827a3f26/clean_build.sh#L20)
-  file can be created for persistent build environment variables [without being tracked by git](https://github.com/debauchee/barrier/blob/b6a1b5742006157c3fe746288961a9d2827a3f26/.gitignore#L1)
+  A [`build_env.sh`](https://github.com/input-leap/input-leap/blob/b6a1b5742006157c3fe746288961a9d2827a3f26/clean_build.sh#L20)
+  file can be created for persistent build environment variables [without being tracked by git](https://github.com/input-leap/input-leap/blob/b6a1b5742006157c3fe746288961a9d2827a3f26/.gitignore#L1)
   

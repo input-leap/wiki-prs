@@ -14,7 +14,7 @@
 sudo apt update && sudo apt upgrade
 sudo apt install git cmake make xorg-dev g++ libcurl4-openssl-dev \
                  libavahi-compat-libdnssd-dev libssl-dev libx11-dev \
-                 libqt4-dev qtbase5-dev
+                 libqt5-dev qtbase5-dev
 ```
 
 ### Fedora
@@ -60,11 +60,11 @@ sudo zypper install libdrm-devel libglvnd-devel libICE-devel \
 
 ## Building from source
 ```shell
-git clone https://github.com/debauchee/barrier.git
+git clone https://github.com/input-leap/input-leap.git
 # this builds from master,
 # you can get release tarballs instead
 # if you want to build from a specific tag/release
-cd barrier
+cd input-leap
 git submodule update --init --recursive
 ./clean_build.sh
 cd build
