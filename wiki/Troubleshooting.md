@@ -1,8 +1,8 @@
 <a name="top"></a>
 
-# Barrier Troubleshooting Steps
+# Input Leap Troubleshooting Steps
 
-This guide has steps that can be tried for troubleshooting Barrier. These steps can help isolate the issue and recommend things to try to resolve the issue. Specific steps for making configuration changes outside of Barrier (i.e. Network, Firewall, Permissions, etc...) are outside the scope of this document and the appropriate references should be used.
+This guide has steps that can be tried for troubleshooting Input Leap. These steps can help isolate the issue and recommend things to try to resolve the issue. Specific steps for making configuration changes outside of Input Leap (i.e. Network, Firewall, Permissions, etc...) are outside the scope of this document and the appropriate references should be used.
 
 ## Document Conventions
 
@@ -44,7 +44,7 @@ There are many ways to open a terminal emulator in the GUI on various linux dist
 [Back to Top](#top)
 
 ## <a name="processes_running">Processes Running</a>
-Barrier uses multiple process to create the software KVM effect. If using the GUI, check that GUI icon is in the _system tray_ (Windows or some Linux desktops) or on the right side of the _menu bar_ (MacOS). The GUI is only used to configure and control the client or server processes. 
+Input Leap uses multiple process to create the software KVM effect. If using the GUI, check that GUI icon is in the _system tray_ (Windows or some Linux desktops) or on the right side of the _menu bar_ (MacOS). The GUI is only used to configure and control the client or server processes. 
 
 ### Windows Processes
 - Press `Ctrl + Shift + Esc` to open the _Task Manager_
@@ -68,7 +68,7 @@ __Note:__ Including the brackets [] in the `grep` syntax prevents it from matchi
 [Back to Top](#top)
 
 ## <a name="server_reachability">Server Reachability (Ping)</a>
-Barrier needs network connectivity between machines to work. The easiest way to test this is with the [ping](https://en.wikipedia.org/wiki/Ping_(networking_utility)) or [Test-Connection](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.management/test-connection) commands.
+Input Leap needs network connectivity between machines to work. The easiest way to test this is with the [ping](https://en.wikipedia.org/wiki/Ping_(networking_utility)) or [Test-Connection](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.management/test-connection) commands.
 
 ### Windows Command Prompt
 ```cmd
@@ -97,7 +97,7 @@ __Steps to try if unsuccessful:__
 ## <a name="server_listening">Server Listening (Port 24800)</a>
 The server listens for a network connection on port 24800. You can test connectivity to this port from both the server and its clients. Check connectivity from the server to itself first to make sure it is accepting connections, then check that you can connect to the server across the network from the client. 
 
-- Make sure the server has been started in the Barrier GUI or that the required [processes are running](#processes_running) first
+- Make sure the server has been started in the Input Leap GUI or that the required [processes are running](#processes_running) first
 
 ### Windows PowerShell Test-NetConnection
 - In the PowerShell window run:
@@ -119,18 +119,18 @@ $ openssl s_client -connect <hostname or ip>:24800 | head
 ```
 - If you see `CONNECTED` you are able to connect to the server
 - If you see `Server Certificate` the SSL encryption is working
-- You may see `verify error:num=18:self signed certificate`. Barrier generates a self-signed certificate, so this is nothing to be concerned about
+- You may see `verify error:num=18:self signed certificate`. Input Leap generates a self-signed certificate, so this is nothing to be concerned about
 
 __Steps to try if unsuccessful:__
-- Make sure the Barrier server [process is runnning](#processes_running)
+- Make sure the Input Leap server [process is runnning](#processes_running)
 - Make sure that port `24800` inbound is being allowed through any software firewalls or hardware firewalls between the devices
 - Make sure that port `24800` outbound is being allowed through any software firewalls on the client
-- Instructions for adding Barrier to the Windows firewall can be found [here](Adding-Barrier-to-the-Windows-Firewall.md)
+- Instructions for adding Input Leap to the Windows firewall can be found [here](Adding-Input-Leap-to-the-Windows-Firewall.md)
 
 [Back to Top](#top)
 
 ## <a name="multiple_instances">Multiple Instances</a>
-Multiple instances of the background services that Barrier uses (`barriers` on the server, and `barrierc` on the client) can cause issues. For example, if another `barriers` process is running in the backround it will prevent the current process from binding to port `24800` and you may see incorrect status in the GUI.
+Multiple instances of the background services that Input Leap uses (`barriers` on the server, and `barrierc` on the client) can cause issues. For example, if another `barriers` process is running in the backround it will prevent the current process from binding to port `24800` and you may see incorrect status in the GUI.
 
 ### Windows
 - Press `Ctrl + Shift + Esc` to open the _Task Manager_
@@ -157,17 +157,17 @@ __Steps to try if unsuccessful:__
 [Back to Top](#top)
 
 ## <a name="fingerprint_trust">Fingerprint Trust</a>
-Barrier uses fingerprints to validate that a malicious server is not trying to intercept a client connection. These fingerprints may be automatically generated if _Auto Config_ is selected in the client. If your client does not trust the fingerprint it will refuse the connection.
+Input Leap uses fingerprints to validate that a malicious server is not trying to intercept a client connection. These fingerprints may be automatically generated if _Auto Config_ is selected in the client. If your client does not trust the fingerprint it will refuse the connection.
 
 The _TrustedServers.txt_ file should contain the fingerprint found in the _Local.txt_ file on the server.
 
 ### View the server fingerprint in the GUI
-- Open the main Barrier GUI window
+- Open the main Input Leap GUI window
 - The _SSL Fingerprint:_ field in the _Server_ section shows the current server fingerprint
 
 ### View the fingerprints on Windows
 - Open _File Explorer_
-- In the _path bar_ enter `%LocalAppData%\Barrier\SSL\Fingerprints`
+- In the _path bar_ enter `%LocalAppData%\Input Leap\SSL\Fingerprints`
 - Double-click either _Local.txt_ for the server fingerprints, or _TrustedServers.txt_ to view the fingerprints trusted by the client
 
 ### View the fingerprints on MacOS
