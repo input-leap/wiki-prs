@@ -1,4 +1,4 @@
-# Barrier
+# Input Leap
 
 ## General
 
@@ -14,3 +14,5 @@ more!
 ## Binary Downloads
 
 Work in progress, we're looking into signed Windows and macOS builds.
+
+You can pick up unsigned *debug* build artifacts from GitHub Actions.
