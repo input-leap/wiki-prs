@@ -3,9 +3,9 @@
 ## Before You Start
 
 You should be at least moderately comfortable with Git, CMake, and the command
-line before relying on this method. It requires a good bit of free hard drive 
+line before relying on this method. It requires a good bit of free hard drive
 space due to the large amount of dependencies required for the build (see below)
-and is meant for programmers that want to help discover and fix programming 
+and is meant for programmers that want to help discover and fix programming
 errors. When in doubt go for [binaries](Home) instead!
 
 # How to Build Barrier.app on MacOS

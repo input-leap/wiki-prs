@@ -1,10 +1,10 @@
 <a name="top"></a>
 
-# Using Barrier from the Command Line
+# Using Input Leap from the Command Line
 
 You might to use the command line without the GUI to run barrier, especially if
 you do not change settings frequently or do not want the Qt GUI running all the
-time. These instructions cover using Barrier via the command line interface.
+time. These instructions cover using Input Leap via the command line interface.
 
 _The [Synergy wiki](https://github.com/symless/synergy-core/wiki) was
 used as a reference in creating this documentation._
@@ -37,14 +37,14 @@ command output
 
 ## <a name="windows">Windows</a>
 
-To use Barrier commands from the command line in Windows you can either change
-directories to the folder that they are located in each time or add the Barrier
+To use Input Leap commands from the command line in Windows you can either change
+directories to the folder that they are located in each time or add the Input Leap
 directory to your `%PATH%` variable.
 
 To change to the directory:
 
 ```cmd
-cd "\Program Files\Barrier"
+cd "\Program Files\Input Leap"
 ```
 
 To add the directory to `%PATH%`:
@@ -53,7 +53,7 @@ To add the directory to `%PATH%`:
 - Click on _Advanced system settings_ on the left panel
 - On the _Advanced_ tab, click the _Environment Variables..._ button
 - In the _System variables_ list, double-click the _Variable_ named _Path_
-- Click _New_ and enter `C:\Program Files\Barrier`
+- Click _New_ and enter `C:\Program Files\Input Leap`
 - Click _OK_ in the _Edit environment variable_ dialog
 - Click _OK_ in the _Environment Variables_ dialog
 - Click _OK_ in the _System Properties_ dialog
@@ -62,7 +62,7 @@ This will only effect command prompts opened after the change.
 
 ### Portable
 
-The command line version of Barrier is a single client executable `barrierc.exe`
+The command line version of Input Leap is a single client executable `barrierc.exe`
 and a single server executable `barriers.exe`. They both have a dependency to OpenSSL
 libraries, `libeay32.dll` and `ssleay32.dll` (used for encryption, unless argument
 `--disable-crypto`), as well as Microsoft Visual C++ runtime libraries.
@@ -71,7 +71,7 @@ From an existing installation you can copy the necessary program files to
 a location of choice, to get a command line only portable (depending on configuration)
 installation. It is also possible to extract the files directly from the installer
 by using the tool [innounp](http://innounp.sourceforge.net/).
-Copy the following files from the installation directory `C:\Program Files\Barrier`:
+Copy the following files from the installation directory `C:\Program Files\Input Leap`:
 
 ```
 barrierc.exe
@@ -100,18 +100,18 @@ location of server configuration file and SSL/TLS configuration files. See
 
 ## <a name='macos'>MacOS</a>
 
-To use Barrier commands from the command line on MacOS you can either change
+To use Input Leap commands from the command line on MacOS you can either change
 directories to the folder they are located and run them using the relative path
-(i.e. `./barriers`) each time or add the `Barrier.app/Contents/MacOS` directory 
+(i.e. `./barriers`) each time or add the `Input Leap.app/Contents/MacOS` directory 
 to your `$PATH`.
 
 ```cmd
-cd /Applications/Barrier.app/Contents/MacOS/
+cd /Applications/Input Leap.app/Contents/MacOS/
 ```
 
 To add the directory to `$PATH`:
 ```cmd
-export PATH=/Applications/Barrier.app/Contents/MacOS/:$PATH
+export PATH=/Applications/Input Leap.app/Contents/MacOS/:$PATH
 ```
 
 The `$PATH` variable will only be set for the duration of the current shell
@@ -124,7 +124,7 @@ file or set the `$PATH` variable in your `.profile` or `.bashrc` file.
 
 ## <a name="linux">Linux/Unix</a>
 
-If Barrier has been installed using a package manager or equivalent it should
+If Input Leap has been installed using a package manager or equivalent it should
 already be in your `$PATH`.
 
 If installed using flatpak, you can run the command line client like this:
@@ -213,21 +213,21 @@ If you would like to add the barrier client or server as a service on a
 systemd-based linux distribution, you can create a 
 [`.service` file for systemd](https://www.freedesktop.org/software/systemd/man/systemd.service.html).
 
-Running Barrier as a systemd service as the root user will allow Barrier to
-access any X11 screen. If you need to use Barrier before logging (i.e. in a
+Running Input Leap as a systemd service as the root user will allow Input Leap to
+access any X11 screen. If you need to use Input Leap before logging (i.e. in a
 Display Manager like GDM) in this is possibly the only option despite the
-possible security concern of running Barrier as root. If you do not need to use
-Barrier at the login screen it is likely better to run Barrier under your user
+possible security concern of running Input Leap as root. If you do not need to use
+Input Leap at the login screen it is likely better to run Input Leap under your user
 account.
 
 Here is an example `.service` template for a service on a computer used by one
-person where Barrier does not need access to the Display Manager. This can be
+person where Input Leap does not need access to the Display Manager. This can be
 put in the `/etc/systemd/system/` directory and started or stopped with the
 `systemctl` command. This assumes that the X11 display is on `:0`.
 
 ```ini
 [Unit]
-Description=Barrier Client daemon
+Description=Input Leap Client daemon
 After=network.target
 
 [Service]
@@ -240,7 +240,7 @@ Restart=always
 WantedBy=multi-user.target
 ```
 
-If you want to use a systemd Barrier service on a multi-user system, consider 
+If you want to use a systemd Input Leap service on a multi-user system, consider 
 using a [user service](https://www.freedesktop.org/software/systemd/man/user@.service.html)
 or starting the GUI application at logon instead.
 
@@ -259,8 +259,8 @@ Information about creating daemons/agents for MacOS can be found at
 [launchd.info](https://www.launchd.info/).
 
 The recommended method of starting automatically on MacOS is with the GUI by
-dragging _Barrier.app_ to the _Login Items_ pane in _System Preferences_ >
-_Users & Groups_. This method does start Barrier after logging in.
+dragging _Input Leap.app_ to the _Login Items_ pane in _System Preferences_ >
+_Users & Groups_. This method does start Input Leap after logging in.
 
 <a href="#top">Back to top</a>
 
@@ -271,7 +271,7 @@ _Users & Groups_. This method does start Barrier after logging in.
 The Windows version uses a service that can be started/stopped in the Windows
 [Services snap-in](https://en.wikipedia.org/wiki/Windows_service#Services_snap-in).
 The Services snap-in can be accessed by pressing `(⊞ Win) + R` and typing
-`services.msc` in the _Run_ dialog. The service is named `Barrier`.
+`services.msc` in the _Run_ dialog. The service is named `Input Leap`.
 
 <a href="#top">Back to top</a>
 
@@ -279,18 +279,18 @@ The Services snap-in can be accessed by pressing `(⊞ Win) + R` and typing
 
 ## <a name="text_config">Text File Configuration</a>
 
-If you use Barrier from the command line you may need to create a configuration
+If you use Input Leap from the command line you may need to create a configuration
 file. Configuration files can be copied from their default GUI locations as a
 baseline.
 
 The client will use the configuration specified by the server.
 
 By default the server will look for a configuration file at the following paths, in prioritized order:
-- User specific location: `%LocalAppData%\Barrier\barrier.sgc` on Windows, `~/.local/share/barrier/.barrier.conf` or `$XDG_DATA_HOME/barrier/.barrier.conf` on Linux.
-- System shared location: `C:\ProgramData\Barrier\barrier.sgc` on Windows, `/etc/barrier.conf` on Linux.
+- User specific location: `%LocalAppData%\Input Leap\barrier.sgc` on Windows, `~/.local/share/barrier/.barrier.conf` or `$XDG_DATA_HOME/barrier/.barrier.conf` on Linux.
+- System shared location: `C:\ProgramData\Input Leap\barrier.sgc` on Windows, `/etc/barrier.conf` on Linux.
 
 The user specific location can be customized with command line argument `--profile-dir`,
-and Barrier will look for a configuration file with default name (`barrier.sgc` on Windows,
+and Input Leap will look for a configuration file with default name (`barrier.sgc` on Windows,
 `.barrier.conf` on Linux) there:
 
 ```shell
@@ -338,7 +338,7 @@ section: options
 end
 ```
 
-Examples can be found [in the `doc` directory](https://github.com/debauchee/barrier/tree/master/doc) of the Barrier repository.
+Examples can be found [in the `doc` directory](https://github.com/debauchee/barrier/tree/master/doc) of the Input Leap repository.
 
 <a href="#top">Back to top</a>
 
@@ -559,19 +559,19 @@ sections, `[General]` and `[internalConfig]`.
 
 ## <a name="ssl_config">SSL/TLS Configuration</a>
 
-Barrier supports SSL/TLS encryption, by use of the `OpenSSL` library (included).
+Input Leap supports SSL/TLS encryption, by use of the `OpenSSL` library (included).
 Starting with version 2.4.0 this is enabled by default, but requires a certificate
 and fingerprint.
 
 The SSL related configuration is kept in subdirectory "SSL" in the same user specific location
 as the [text file configuration](#text_config) is loaded from: By default
-`%LocalAppData%\Barrier\SSL` on Windows, `~/.local/share/barrier/SSL` or `$XDG_DATA_HOME/barrier/SSL`
+`%LocalAppData%\Input Leap\SSL` on Windows, `~/.local/share/barrier/SSL` or `$XDG_DATA_HOME/barrier/SSL`
 on Linux, but configurable with command line argument `--profile-dir`.
 
 On the server, the root of the SSL directory must contain the certificate as a file
-with name `Barrier.pem`, containing the private and public key.
+with name `Input Leap.pem`, containing the private and public key.
 
-Barrier uses fingerprints to validate that a malicious server is not trying to intercept
+Input Leap uses fingerprints to validate that a malicious server is not trying to intercept
 a client connection, and be if successfull it would be able to send mouse and keyboard
 input to the client. A server's fingerprint must be generated from the certificate, and
 may be kept in file `SSL/Fingerprints/Local.txt` on the server. All clients must have the
@@ -582,7 +582,7 @@ client, it will refuse the connection. See also
 
 The server will therefore typically contain the following files:
 ```
-/SSL/Barrier.pem
+/SSL/Input Leap.pem
 /SSL/Fingerprints/Local.txt
 ```
 
@@ -591,7 +591,7 @@ Clients must contain the following file:
 /SSL/Fingerprints/TrustedServers.txt
 ```
 
-In addition to the above described server identify verification on clients, Barrier also
+In addition to the above described server identify verification on clients, Input Leap also
 supports verification of client identities connecting to the server. This is not as
 critical as the verification of server identity, since a malicous client will not be able
 to control the mouse and keyboard on server, but it can still receive input and
@@ -604,14 +604,14 @@ certificate, same as server, and its fingerprint must be added to file
 
 The server will now contain the following files:
 ```
-/SSL/Barrier.pem
+/SSL/Input Leap.pem
 /SSL/Fingerprints/Local.txt
 /SSL/Fingerprints/TrustedClients.txt
 ```
 
 Clients will now contain the following files:
 ```
-/SSL/Barrier.pem
+/SSL/Input Leap.pem
 /SSL/Fingerprints/Local.txt
 /SSL/Fingerprints/TrustedServers.txt
 ```
@@ -630,22 +630,22 @@ this fingerprint trust manually.
 
 To manually create the certificate and fingerprint similar to how the UI application does
 it, you can follow the Windows example below. It creates them in the default location
-`%LocalAppData%\Barrier\SSL`. If you have the are planning to keep the SSL files in a
+`%LocalAppData%\Input Leap\SSL`. If you have the are planning to keep the SSL files in a
 custom location specified with command line argument `--profile-dir`, you must change
 the paths in the example accordingly. It also requires an OpenSSL installation,
 e.g installer from [http://slproweb.com/products/Win32OpenSSL.html] installed into
 default location `C:\Program Files\OpenSSL-Win64`.
 
 ```
-MKDIR "%LocalAppData%\Barrier\SSL\Fingerprints" >NUL 2>&1
-"C:\Program Files\OpenSSL-Win64\bin\openssl.exe" req -config "C:\Program Files\OpenSSL-Win64\bin\openssl.cfg" -x509 -nodes -days 365 -subj /CN=Barrier -newkey rsa:2048 -keyout "%LocalAppData%\Barrier\SSL\Barrier.pem" -out "%LocalAppData%\Barrier\SSL\Barrier.pem"
-FOR /F "tokens=2 delims=^=" %%a in ('""C:\Program Files\OpenSSL-Win64\bin\openssl.exe" x509 -fingerprint -sha256 -noout -in "%LocalAppData%\Barrier\SSL\Barrier.pem""') DO ECHO v2:sha256:%a> "%LocalAppData%\Barrier\SSL\Fingerprints\Local.txt"
+MKDIR "%LocalAppData%\Input Leap\SSL\Fingerprints" >NUL 2>&1
+"C:\Program Files\OpenSSL-Win64\bin\openssl.exe" req -config "C:\Program Files\OpenSSL-Win64\bin\openssl.cfg" -x509 -nodes -days 365 -subj /CN=Input Leap -newkey rsa:2048 -keyout "%LocalAppData%\Input Leap\SSL\Input Leap.pem" -out "%LocalAppData%\Input Leap\SSL\Input Leap.pem"
+FOR /F "tokens=2 delims=^=" %%a in ('""C:\Program Files\OpenSSL-Win64\bin\openssl.exe" x509 -fingerprint -sha256 -noout -in "%LocalAppData%\Input Leap\SSL\Input Leap.pem""') DO ECHO v2:sha256:%a> "%LocalAppData%\Input Leap\SSL\Fingerprints\Local.txt"
 ```
 
 Now, on any clients you must manually ensure there is a text file
-`%LocalAppData%\Barrier\SSL\Fingerprints\TrustedServers.txt`,
+`%LocalAppData%\Input Leap\SSL\Fingerprints\TrustedServers.txt`,
 and append the line from the text file
-`%LocalAppData%\Barrier\SSL\Fingerprints\Local.txt` on server,
+`%LocalAppData%\Input Leap\SSL\Fingerprints\Local.txt` on server,
 e.g.
 
 ```
@@ -653,7 +653,7 @@ v2:sha256:92:D0:AB:DD:38:5C:E5:21:20:8E:52:E8:83:28:A0:2A:CC:CC:8F:A3:70:41:9B:A
 ```
 
 When using client verification you must also do the same the other way around:
-copy the fingerprint from `%LocalAppData%\Barrier\SSL\Fingerprints\Local.txt` on each
-client into `%LocalAppData%\Barrier\SSL\Fingerprints\TrustedClients.txt` on server.
+copy the fingerprint from `%LocalAppData%\Input Leap\SSL\Fingerprints\Local.txt` on each
+client into `%LocalAppData%\Input Leap\SSL\Fingerprints\TrustedClients.txt` on server.
 
 ---

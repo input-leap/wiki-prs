@@ -1,10 +1,10 @@
 ## Binaries Built
 
-- `barrier` the GUI front-end and "main" program
-- `barriers` the CLI server component
-- `barrierc` the CLI client component
+- `input-leap` the GUI front-end and "main" program
+- `input-leaps` the CLI server component
+- `input-leapc` the CLI client component
 
-**note**: these aren't the only things build at compile time, but merely what the end-user is expected to use.
+**Note**: these aren't the only things built at compile time, but merely what the end-user is expected to use.
 
 ## Preparing your system
 
