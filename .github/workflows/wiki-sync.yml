@@ -1,6 +1,7 @@
 name: Publish docs to Wiki
 
 on:
+  workflow_dispatch:
   push:
     paths:
       - wiki/**
@@ -10,7 +11,7 @@ on:
 env:
   USER_TOKEN: ${{ secrets.WIKI_TOKEN }}
   USER_NAME: "GitHub Actions"
-  USER_EMAIL: "shymega@users.noreply.github.com"
+  USER_EMAIL: "input-leap@users.noreply.github.com"
   OWNER: input-leap
   REPOSITORY_NAME: input-leap
 
@@ -21,20 +22,15 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
+        with:
+          persist-credentials: false
 
-      - name: Pull content from wiki
-        run: |
-          mkdir tmp_wiki
-          cd tmp_wiki
-          git init
-          git config user.name $USER_NAME
-          git config user.email $USER_EMAIL
-          git pull https://x:$USER_TOKEN@github.com/$OWNER/$REPOSITORY_NAME.wiki.git
+      - name: Add Wiki as a remote
+        run: git remote add wiki https://$OWNER:$USER_TOKEN@github.com/$OWNER/$REPOSITORY_NAME.wiki
 
-      - name: Push content to wiki
-        run: |
-          rsync -av --delete wiki/ tmp_wiki/ --exclude .git
-          cd tmp_wiki
-          git add .
-          git commit -m "Update Wiki content"
-          git push -f --set-upstream https://x:$USER_TOKEN@github.com/$OWNER/$REPOSITORY_NAME.wiki.git master
+      - name: Make sure to fetch remotes, unshallowed
+        run: git fetch --unshallow origin
+
+      - name: Mirror all commits to production Wiki remote.
+        run: git push --force wiki master:master
+
