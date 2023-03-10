@@ -33,4 +33,3 @@ jobs:
 
       - name: Mirror all commits to production Wiki remote.
         run: git push --force wiki master:master
-
