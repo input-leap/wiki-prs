@@ -54,11 +54,10 @@ sudo zypper install libdrm-devel libglvnd-devel libICE-devel \
 ```
 
 ## Building from source
+
 ```shell
 git clone https://github.com/input-leap/input-leap.git
-# this builds from master,
-# you can get release tarballs instead
-# if you want to build from a specific tag/release
+# This builds from master, but you can also checkout a tag or branch.
 cd input-leap
 git submodule update --init --recursive
 ./clean_build.sh
