@@ -61,6 +61,5 @@ git clone https://github.com/input-leap/input-leap.git
 cd input-leap
 git submodule update --init --recursive
 ./clean_build.sh
-cd build
-sudo make install # install to /usr/local/
+sudo cmake --install build # install to /usr/local/
 ```
