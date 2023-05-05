@@ -9,7 +9,6 @@ as well as the Snap, macOS, and Windows packages.
 To ease confusion, the following instructions have been deprecated until further
 notice. Input Leap is not ready for general use yet.
 
-~~
 ## Install dependencies
 
 Barrier is built against the [KDE runtime and SDK](https://github.com/AdrianKoshka/barrier-manifest/blob/master/com.github.debauchee.barrier.json#L3-L5),
@@ -50,4 +49,4 @@ compile for `i386`, this can be done via:
 
 `make BUILDER_OPTIONS="--arch=i386"`
 
-Keep in mind though, you'll need to install the `i386` platform and SDK.~~
+Keep in mind though, you'll need to install the `i386` platform and SDK.
