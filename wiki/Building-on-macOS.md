@@ -72,7 +72,27 @@ following the instructions on their websites
   By default the resulting binaries will be in `./build/bin` and the 
   application bundle (.app) will be in `./build/bundle`. The release target
   also creates a disk image (dmg).
-  
+
+### Code signing the .app
+
+If you do not code sign the `.app` inside the bundle folder, a crash
+can occur when you try to run it depending on your system
+configuration. The crash report will show the `Termination Reason` as:
+
+```
+...
+Termination Reason:    Namespace CODESIGNING, Code 2 Invalid Page"
+...
+```
+
+  - Sign the `InputLeap.app` bundle to prevent this crash
+  ```
+  codesign --force --deep --sign - ./build/bundle/InputLeap.app
+  ```
+
+You do not need to have set up a signing identity with apple for this
+to prevent the crash.
+
 #### Notes
   
   A [`build_env.sh`](https://github.com/input-leap/input-leap/blob/b6a1b5742006157c3fe746288961a9d2827a3f26/clean_build.sh#L20)
