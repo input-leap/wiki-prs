@@ -8,7 +8,7 @@ space due to the large amount of dependencies required for the build (see below)
 and is meant for programmers that want to help discover and fix programming
 errors. When in doubt go for [binaries](Home) instead!
 
-# How to Build Barrier.app on MacOS
+# How to Build InputLeap.app on MacOS
 
 *as of May 2020*
 
