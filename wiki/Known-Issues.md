@@ -14,7 +14,12 @@ This issues are some of the most common ones reported, and we aim
 
   Please feel free to inspect Input Leap's [source code][src_code].
 
+- Dead corner setting not working
+
+  Possible workaround: Instead of setting the corners on the "Advanced server settings" tab, double click your host icon on the "Screens and links" tab and set it there.
 
 [wiki_repo]: https://github.com/input-leap/input-leap/wiki-prs
 [av_issue]: https://github.com/input-leap/input-leap/issues/666
 [src_code]: https://github.com/input-leap/input-leap.git
+
+
