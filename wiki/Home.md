@@ -16,3 +16,9 @@ more!
 Work in progress, we're looking into signed Windows and macOS builds.
 
 You can pick up unsigned *debug* build artifacts from GitHub Actions.
+
+## Contributions
+
+This wiki is synced from https://github.com/input-leap/wiki-prs
+
+Contributions from issues to updates should go there.
