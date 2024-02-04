@@ -30,7 +30,7 @@ following the instructions on their websites
 
   - Install packages for Qt5, OpenSSL, and pkgconfig
   ```
-  brew install qt5 openssl pkg-config
+  brew install qt5 openssl pkg-config cmake
   ```
 
 ### Clone the repository
