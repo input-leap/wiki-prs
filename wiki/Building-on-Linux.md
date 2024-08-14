@@ -28,7 +28,9 @@ sudo dnf install git cmake make gcc-c++ xorg-x11-server-devel \
                  libcurl-devel avahi-compat-libdns_sd-devel \
                  libXtst-devel qt5-qtbase qt5-qtbase-devel  \
                  qt5-qttools-devel libICE-devel libSM-devel \
-                 openssl-devel libXrandr-devel libXinerama-devel
+                 openssl-devel libXrandr-devel libXinerama-devel \
+                 qt6-qtbase-devel qt6-qttools-devel qt6-qt5compat-devel \
+                 libei-devel
 ```
 
 ### CentOS 8+
