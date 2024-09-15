@@ -2,7 +2,7 @@
 
 # Using Input Leap from the Command Line
 
-You might to use the command line without the GUI to run barrier, especially if
+You might to use the command line without the GUI to run input leap, especially if
 you do not change settings frequently or do not want the Qt GUI running all the
 time. These instructions cover using Input Leap via the command line interface.
 
@@ -62,8 +62,8 @@ This will only effect command prompts opened after the change.
 
 ### Portable
 
-The command line version of Input Leap is a single client executable `barrierc.exe`
-and a single server executable `barriers.exe`. They both have a dependency to OpenSSL
+The command line version of Input Leap is a single client executable `input-leapc.exe`
+and a single server executable `input-leaps.exe`. They both have a dependency to OpenSSL
 libraries, `libeay32.dll` and `ssleay32.dll` (used for encryption, unless argument
 `--disable-crypto`), as well as Microsoft Visual C++ runtime libraries.
 
@@ -74,8 +74,8 @@ by using the tool [innounp](http://innounp.sourceforge.net/).
 Copy the following files from the installation directory `C:\Program Files\Input Leap`:
 
 ```
-barrierc.exe
-barriers.exe
+input-leapc.exe
+input-leaps.exe
 libeay32.dll
 ssleay32.dll
 ```
@@ -102,7 +102,7 @@ location of server configuration file and SSL/TLS configuration files. See
 
 To use Input Leap commands from the command line on MacOS you can either change
 directories to the folder they are located and run them using the relative path
-(i.e. `./barriers`) each time or add the `Input Leap.app/Contents/MacOS` directory 
+(i.e. `./input-leaps`) each time or add the `Input Leap.app/Contents/MacOS` directory
 to your `$PATH`.
 
 ```cmd
@@ -129,11 +129,11 @@ already be in your `$PATH`.
 
 If installed using flatpak, you can run the command line client like this:
 ```cmd
-flatpak run --command=barrierc com.github.debauchee.barrier
+flatpak run -command=input-leapc io.github.input_leap.InputLeap
 ```
 And server like this:
 ```cmd
-flatpak run --command=barriers com.github.debauchee.barrier
+flatpak run --command=input-leaps io.github.input_leap.InputLeap
 ```
 
 <a href="#top">Back to top</a>
@@ -144,10 +144,10 @@ flatpak run --command=barriers com.github.debauchee.barrier
 
 To see the server command line options, use the `--help` argument:
 ```
-barriers --help
-Start the barrier server component.
+input-leaps --help
+Start the input-leap server component.
 
-Usage: barriers [--address <address>] [--config <pathname>] [--daemon|--no-daemon] [--name <screen-name>] [--restart|--no-restart] [--debug <level>]
+Usage: input-leaps [--address <address>] [--config <pathname>] [--daemon|--no-daemon] [--name <screen-name>] [--restart|--no-restart] [--debug <level>]
 
 Options:
   -a, --address <address>  listen for clients on the given address.
@@ -177,10 +177,10 @@ Options:
 
 To see the client command line options, use the `--help` argument:
 ```
-barrierc --help
-Start the barrier client and connect to a remote server component.
+input-leapc --help
+Start the input-leap client and connect to a remote server component.
 
-Usage: barrierc [--yscroll <delta>] [--daemon|--no-daemon] [--name <screen-name>] [--restart|--no-restart] [--debug <level>] <server-address>
+Usage: input-leapc [--yscroll <delta>] [--daemon|--no-daemon] [--name <screen-name>] [--restart|--no-restart] [--debug <level>] <server-address>
 
 Options:
   -d, --debug <level>      filter out log messages with priority below level.
@@ -209,7 +209,7 @@ Options:
 
 [comment]: <> (TODO: This section will need to be updated if PR #694 is merged)
 
-If you would like to add the barrier client or server as a service on a 
+If you would like to add the input leap client or server as a service on a
 systemd-based linux distribution, you can create a 
 [`.service` file for systemd](https://www.freedesktop.org/software/systemd/man/systemd.service.html).
 
@@ -233,7 +233,7 @@ After=network.target
 [Service]
 User=<username>
 Group=<groupname>
-ExecStart=barrierc --enable-crypto --display :0 --debug INFO -f <server hostname or IP>
+ExecStart=input-leapc --enable-crypto --display :0 --debug INFO -f <server hostname or IP>
 Restart=always
 
 [Install]
@@ -244,7 +244,7 @@ If you want to use a systemd Input Leap service on a multi-user system, consider
 using a [user service](https://www.freedesktop.org/software/systemd/man/user@.service.html)
 or starting the GUI application at logon instead.
 
-The barrier client can also be started from the command line remotely using
+The input-leap client can also be started from the command line remotely using
 `ssh` as long as `$DISPLAY` is set or specified with `--display`.
 
 <a href="#top">Back to top</a>
@@ -286,22 +286,22 @@ baseline.
 The client will use the configuration specified by the server.
 
 By default the server will look for a configuration file at the following paths, in prioritized order:
-- User specific location: `%LocalAppData%\Input Leap\barrier.sgc` on Windows, `~/.local/share/barrier/.barrier.conf` or `$XDG_DATA_HOME/barrier/.barrier.conf` on Linux.
-- System shared location: `C:\ProgramData\Input Leap\barrier.sgc` on Windows, `/etc/barrier.conf` on Linux.
+- User specific location: `%LocalAppData%\Input Leap\InputLeap.sgc` on Windows, `$XDG_DATA_HOME/.config/InputLeap/InputLeap.conf` on Linux.
+- System shared location: `C:\ProgramData\Input Leap\InputLeap.sgc` on Windows, `/etc/InputLeap.conf` on Linux.
 
 The user specific location can be customized with command line argument `--profile-dir`,
-and Input Leap will look for a configuration file with default name (`barrier.sgc` on Windows,
-`.barrier.conf` on Linux) there:
+and Input Leap will look for a configuration file with default name (`InputLeap.sgc` on Windows,
+`InputLeap.conf` on Linux) there:
 
 ```shell
-barriers --profile-dir ~/barrier/config/path ...
+input-leaps --profile-dir ~/input-leap/config/path ...
 ```
 
 You can also use command line argument `--config` to set path to a specific configuration
 file that should be used.
 
 ```shell
-barriers --config ~/barrier/config/path/file.conf ...
+input-leaps --config ~/input-leap/config/path/file.conf ...
 ```
 
 <a href="#top">Back to top</a>
@@ -338,7 +338,7 @@ section: options
 end
 ```
 
-Examples can be found [in the `doc` directory](https://github.com/debauchee/barrier/tree/master/doc) of the Input Leap repository.
+Examples can be found [in the `doc` directory](https://github.com/input-leap/input-leap/tree/master/doc) of the Input Leap repository.
 
 <a href="#top">Back to top</a>
 
@@ -548,7 +548,7 @@ name. The following named keys are valid in a configuration:
 ## <a name="client_config">Client Configuration File</a>
 
 Client options are set either by the command line arguments or by the server the
-client has connected to. There is no `--config` argument for the `barrierc`
+client has connected to. There is no `--config` argument for the `input-leapc`
 client command.
 
 The client saves a configuration file that can be read for informational or
@@ -565,7 +565,7 @@ and fingerprint.
 
 The SSL related configuration is kept in subdirectory "SSL" in the same user specific location
 as the [text file configuration](#text_config) is loaded from: By default
-`%LocalAppData%\Input Leap\SSL` on Windows, `~/.local/share/barrier/SSL` or `$XDG_DATA_HOME/barrier/SSL`
+`%LocalAppData%\Input Leap\SSL` on Windows, `~/.local/share/InputLeap/SSL` or `$XDG_DATA_HOME/.config/InputLeap/SSL`
 on Linux, but configurable with command line argument `--profile-dir`.
 
 On the server, the root of the SSL directory must contain the certificate as a file
@@ -578,7 +578,7 @@ may be kept in file `SSL/Fingerprints/Local.txt` on the server. All clients must
 fingerprint hash string of trusted servers in a file `SSL/Fingerprints/TrustedServers.txt`.
 When connecting to a server, if it presents a fingerprint not explicitely trusted by the
 client, it will refuse the connection. See also
-[Fingerprint trust troubleshooting](https://github.com/debauchee/barrier/wiki/Troubleshooting#fingerprint-trust).
+[Fingerprint trust troubleshooting](https://github.com/input-leap/input-leap/wiki/Troubleshooting#fingerprint-trust).
 
 The server will therefore typically contain the following files:
 ```
