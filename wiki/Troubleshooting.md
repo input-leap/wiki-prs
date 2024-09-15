@@ -49,19 +49,19 @@ Input Leap uses multiple process to create the software KVM effect. If using the
 ### Windows Processes
 - Press `Ctrl + Shift + Esc` to open the _Task Manager_
 - Click on the _Details_ tab and click on the _Name_ header to sort by name
-- Look for the `barrier.exe` process if the GUI is running
-- Look for the `barrierd.exe` process
-- Look for the `barrierc.exe` process on a client
-- Look for the `barriers.exe` process on a server
+- Look for the `input-leap.exe` process if the GUI is running
+- Look for the `input-leapd.exe` process
+- Look for the `input-leapc.exe` process on a client
+- Look for the `input-leaps.exe` process on a server
 
 ### Linux/Unix/MacOS
-- Use [ps](https://en.wikipedia.org/wiki/Ps_(Unix)) and [grep](https://en.wikipedia.org/wiki/Grep) commands to find barrier processes:
+- Use [ps](https://en.wikipedia.org/wiki/Ps_(Unix)) and [grep](https://en.wikipedia.org/wiki/Grep) commands to find input-leap processes:
 ```shell
 ps -ax -o user,pid,command | grep -i [b]arrier
 ```
-- Look for the `barrier` process if the GUI is running
-- Look for the `barrierc` process on a client
-- Look for the `barriers` process on a server
+- Look for the `input-leap` process if the GUI is running
+- Look for the `input-leapc` process on a client
+- Look for the `input-leaps` process on a server
 
 __Note:__ Including the brackets [] in the `grep` syntax prevents it from matching instances of `grep` in the process list.
 
@@ -130,28 +130,28 @@ __Steps to try if unsuccessful:__
 [Back to Top](#top)
 
 ## <a name="multiple_instances">Multiple Instances</a>
-Multiple instances of the background services that Input Leap uses (`barriers` on the server, and `barrierc` on the client) can cause issues. For example, if another `barriers` process is running in the backround it will prevent the current process from binding to port `24800` and you may see incorrect status in the GUI.
+Multiple instances of the background services that Input Leap uses (`input-leaps` on the server, and `input-leapc` on the client) can cause issues. For example, if another `input-leaps` process is running in the backround it will prevent the current process from binding to port `24800` and you may see incorrect status in the GUI.
 
 ### Windows
 - Press `Ctrl + Shift + Esc` to open the _Task Manager_
 - Click on the _Details_ tab and click on the _Name_ header to sort by name
-- Make sure there is only one `barrier.exe` process if the GUI is running
-- Make sure there is only one `barriers.exe` and one `barrierd.exe` process if the server is running
-- Make sure there is only one `barrierc.exe` and one `barrierd.exe` process if the client is running
+- Make sure there is only one `input-leap.exe` process if the GUI is running
+- Make sure there is only one `input-leaps.exe` and one `input-leapd.exe` process if the server is running
+- Make sure there is only one `input-leapc.exe` and one `input-leapd.exe` process if the client is running
 
 ### Linux/Unix/MacOS
-- Use `grep` and `ps` to find barrier processes
+- Use `grep` and `ps` to find input-leap processes
 ```shell
 ps -ax -o user,pid,command | grep -i [b]arrier
 ```
-- Make sure there is only one `barrier` process if the GUI is running
-- Make sure there is only one `barriers` process if the server is running
-- Make sure there is only one `barrierc` process if the client is running
+- Make sure there is only one `input-leap` process if the GUI is running
+- Make sure there is only one `input-leaps` process if the server is running
+- Make sure there is only one `input-leapc` process if the client is running
 
-__Note:__ The barrier command line arguments may make a single command wrap on the terminal to more than one line
+__Note:__ The input-leap command line arguments may make a single command wrap on the terminal to more than one line
 
 __Steps to try if unsuccessful:__
-- Try stopping all of the barrier processes (_End Task_ on Windows, `kill <pid>` on Linux/Unix/MacOS) and relaunching the program
+- Try stopping all of the input-leap processes (_End Task_ on Windows, `kill <pid>` on Linux/Unix/MacOS) and relaunching the program
 - Try restarting the computer
 
 [Back to Top](#top)
@@ -173,29 +173,29 @@ The _TrustedServers.txt_ file should contain the fingerprint found in the _Local
 ### View the fingerprints on MacOS
 - To view the trusted fingerprints on the client use the [more](https://en.wikipedia.org/wiki/More_(command)) command to view the _TrustedServers.txt_ file:
 ```shell
-more ~/Library/Application\ Support/barrier/SSL/Fingerprints/TrustedServers.txt
+more ~/Library/Application\ Support/input-leap/SSL/Fingerprints/TrustedServers.txt
 ```
 - To view the server fingerprint on the server use the `more` command again:
 ```
-more ~/Library/Application\ Support/barrier/SSL/Fingerprints/Local.txt
+more ~/Library/Application\ Support/input-leap/SSL/Fingerprints/Local.txt
 ```
 
 ### View the trusted fingerprints on Linux or Unix
 - To view the trusted fingerprints on the client use the [more](https://en.wikipedia.org/wiki/More_(command)) command to view the _TrustedServers.txt_ file:
 ```shell
-more ~/.local/share/barrier/SSL/Fingerprints/TrustedServers.txt
+more ~/.local/share/input-leap/SSL/Fingerprints/TrustedServers.txt
 ```
 - To view the server fingerprint on the server use the `more` command again:
 ```shell
-more ~/.local/share/barrier/SSL/Fingerprints/Local.txt
+more ~/.local/share/input-leap/SSL/Fingerprints/Local.txt
 ```
 
-On Linux or Unix systems the barrier _TrustedServers.txt_ or _Local.txt_ files may not always be in the same place depending on your system configuration. If they are elsewhere, use the [find](https://en.wikipedia.org/wiki/Find_(Unix)) command to locate them.
+On Linux or Unix systems the input-leap _TrustedServers.txt_ or _Local.txt_ files may not always be in the same place depending on your system configuration. If they are elsewhere, use the [find](https://en.wikipedia.org/wiki/Find_(Unix)) command to locate them.
 ```
 find / -type f -name '*TrustedServers.txt' 2>/dev/null
 find / -type f -name '*Local.txt' 2>/dev/null
 ```
-__Note 1:__ These `find` commands may find other files with the same names. Check that the path includes `barrier`
+__Note 1:__ These `find` commands may find other files with the same names. Check that the path includes `input-leap`
 
 __Note 2:__ The `2>/dev/null` is to hide _Permission denied_ errors you would otherwise get from searching directories you do not have permission for as a normal user
 

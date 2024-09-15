@@ -35,7 +35,7 @@ I am using Windows 10 64-Bit English 1903
 - navigate to the Input Leap folder
 - invoke `clean_build.bat`
 
-If everything went well you should now have a working `barrier.exe` inside `build/bin/Debug`.
+If everything went well you should now have a working `input-leap.exe` inside `build/bin/Debug`.
 I don't know whether a release build built this way is deployable.
 
 ## Customization
