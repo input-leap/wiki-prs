@@ -4,76 +4,59 @@
 
 You should be at least moderately comfortable with Git, CMake, and the command
 line before relying on this method. It requires a good bit of free hard drive
-space due to the large amount of dependencies required for the build (see below)
-and is meant for programmers that want to help discover and fix programming
-errors. When in doubt go for [binaries](Home) instead!
+space due to XCode being required to build anything on mac os. When in doubt go for [binaries](Home) instead!
 
 # How to Build InputLeap.app on MacOS
 
-*as of May 2020*
-
 - Install Xcode from the App Store or download and install it
 from the [Apple Developer Website](https://developer.apple.com/download/more/?=xcode)
-- Install either [MacPorts](https://www.macports.org/) or [Homebrew](https://brew.sh/) 
+- Install either [MacPorts](https://www.macports.org/) or [Homebrew](https://brew.sh/)
 following the instructions on their websites
 - Install dependencies with either MacPorts or Homebrew (see below)
 - Build either the `Debug` or the `Release` targets (see below)
 
-### Install dependencies with MacPorts
+## Dependencies
 
-  - Install packages for Qt5, OpenSSL, and PkgConfig
-  ```
-  sudo port install qt5 openssl pkgconfig
-  ```
+You can use either homebrew or macports to get the dependencies
+  - cmake
+  - openssl
+  - qt6
+
+Are required to build
 
 ### Install dependencies with Homebrew
 
-  - Install packages for Qt5, OpenSSL, and pkgconfig
   ```
-  brew install qt5 openssl pkg-config cmake
-  ```
-
-### Clone the repository
-
-  ```
-  git clone https://github.com/input-leap/input-leap
-  ```
-  - Change directories into the cloned repository
-  ```
-  cd input-leap
+  brew install qt cmake openssl git pkg-config
   ```
 
-### Build the Debug target
-  *The debug target produces un-stripped binaries that have symbols that can be 
-  used for debugging.*
+### Install dependencies with MacPorts
 
-  - Build the `Debug` target using the `clean_build.sh` script
   ```
-  ./clean_build.sh
+  sudo port install qt6 qt6-qttools openssl pkgconfig git cmake
   ```
 
-  By default the resulting binaries will be in `./build/bin` and the 
-  application bundle (.app) will be in `./build/bundle`. The debug target
-  does not create a disk image (dmg).
+## Clone the repository
+You can check out the code using git. This will make a folder input-leap that contains the code.
 
-### Build the Release target
-  *The release target produces smaller stripped binaries and distributable disk image. 
-  This is probably what you want if you are a user.*
+    git clone --recurse-submodules https://github.com/input-leap/input-leap.git
 
-  - Build the `Release` target using the `clean_build.sh` script with environment variables
+Make sure you get the submodules or the you will not be able to build.
 
-  *This step assumes the use of a bourne-like shell (i.e. bash). If using another shell like*
-  `csh` *change the export command to use* `setenv` *instead*.
-  ```
-  export B_BUILD_TYPE=Release
-  ./clean_build.sh
-  ```
+## Building the Project
+Building on mac os (and really any os) is made of two parts. Both of these commands are run from the root of the input-leap source code.
+ First Configuration (-S is where the source is and -B is where to put the build generated stuff). see [Build-Options] for additional options.
 
-  By default the resulting binaries will be in `./build/bin` and the 
-  application bundle (.app) will be in `./build/bundle`. The release target
-  also creates a disk image (dmg).
+    cmake -S. -Bbuild
 
-### Code signing the .app
+ Then Building  (--build invokes the compiler on the "build" folder we made when we configured)
+
+    cmake --build build
+
+ The .app will be in build/bundle
+
+
+## Code signing the .app
 
 If you do not code sign the `.app` inside the bundle folder, a crash
 can occur when you try to run it depending on your system
@@ -93,8 +76,21 @@ Termination Reason:    Namespace CODESIGNING, Code 2 Invalid Page"
 You do not need to have set up a signing identity with apple for this
 to prevent the crash.
 
-#### Notes
+can occur when you try to run it depending on your system
+configuration. The crash report will show the `Termination Reason` as:
 
-  A [`build_env.sh`](https://github.com/input-leap/input-leap/blob/b6a1b5742006157c3fe746288961a9d2827a3f26/clean_build.sh#L20)
-  file can be created for persistent build environment variables [without being tracked by git](https://github.com/input-leap/input-leap/blob/b6a1b5742006157c3fe746288961a9d2827a3f26/.gitignore#L1)
-  
+```
+...
+Termination Reason:    Namespace CODESIGNING, Code 2 Invalid Page"
+...
+```
+
+  - Sign the `InputLeap.app` bundle to prevent this crash
+  ```
+  codesign --force --deep --sign - ./build/bundle/InputLeap.app
+  ```
+
+You do not need to have set up a signing identity with apple for this
+to prevent the crash.
+
+[Build-Options]:Build-Options.md
