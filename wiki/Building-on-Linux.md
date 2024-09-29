@@ -63,3 +63,27 @@ git submodule update --init --recursive
 ./clean_build.sh
 sudo cmake --install build # install to /usr/local/
 ```
+
+### Wayland dependencies
+(assumes an Ubuntu OS) For Wayland support, `libportal` must be installed from source, since the package version doesn't have `InputCapture` support yet.  This guide is useful in building it from source:
+https://discussion.fedoraproject.org/t/input-leap-fedora-39-gnome-wayland/95856
+(Tip for installing packages required for `libportal` build is to use `apt-file search [MISSING_DEPENDENCY]` to locate the correct package to install).
+
+You may need to install:
+```shell
+sudo apt install python3-jinja2 python3-pygments python3-typogrify libgirepository-1.0-dev valac libgirepository-1.0-dev libgirepository1.0-dev
+```
+
+Once `libportal` has been built and installed from source, the following packages must be installed:
+```shell
+sudo apt install libei-dev
+```
+
+Edit `clean_build.sh` and add the lines
+
+```shell
+# added for Wayland
+B_CMAKE_FLAGS="${B_CMAKE_FLAGS} -DINPUTLEAP_BUILD_LIBEI=TRUE"
+```
+
+Run `./clean_build.sh` to build
