@@ -1,4 +1,4 @@
-# History of Input Leap Start with Synergy
+# History of Input Leap starts with Synergy
 
 With the origins of input leap being more than two decades old, it has become quite hard to learn the whole story of this project.
 
@@ -11,3 +11,4 @@ As far as I can tell (and as far as I was able to remember), this is the chain o
 * 2016 this became a product under the company name [Symless](https://web.archive.org/web/20160630194628/http://symless.com/synergy/) with Synergy as a product with binaries being sold.
 * In 2018, [Barrier](https://github.com/debauchee/barrier) made [the first releases](https://github.com/debauchee/barrier/releases/tag/v2.0.0-RC1) as a fork from symless/synergy
 * In 2022, [Input-Leap](https://github.com/input-leap/input-leap) was forked from Barrier
+* In 2024, the original open source project, Synergy, got renamed to [Deskflow](https://github.com/deskflow/deskflow). The name Synergy is now only used for the commercial offering which uses the Deskflow (what formerly was known as Synergy). Deskflow can also be used standalone. In the process, they also added a [history document](https://github.com/deskflow/deskflow/wiki/History) to their wiki.
